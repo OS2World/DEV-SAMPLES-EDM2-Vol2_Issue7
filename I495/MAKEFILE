@@ -1,0 +1,36 @@
+ICCOPTS=-C+ -Kb+ -S2ae -Ss+
+LINKOPTS=/A:16 /NOI
+
+!IFDEF DEBUG
+ICCOPTS=$(ICCOPTS) -Ti
+LINKOPTS=$(LINKOPTS) /CO
+!ENDIF
+
+MYINC=D:\MYINC
+MYLIB=D:\MYLIB
+
+.C.OBJ:
+        @ECHO Now compiling $(@B).C
+        ICC $(ICCOPTS) $(@B).C
+
+I495.EXE:                       I495.OBJ \
+                                $(MYLIB)\SPRITE.LIB \
+                                I495.RES
+        LINK386 $(LINKOPTS) @<<
+I495
+I495
+NUL
+OS2386+SPRITE
+I495
+<<
+        RC I495.RES I495.EXE
+
+I495.RES:                       I495.RC \
+                                RC.H \
+                                *.BMP
+        RC -r I495.RC I495.RES
+
+I495.OBJ:                       I495.C \
+                                RC.H \
+                                $(MYINC)\SPRITE.H
+

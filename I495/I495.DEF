@@ -1,0 +1,9 @@
+NAME I495 WINDOWAPI NEWFILES
+
+DESCRIPTION 'I-495 - A Sprite Demonstration
+Copyright (c) 1994 by Larry Salomon, Jr.
+All rights reserved.'
+
+PROTMODE
+STACKSIZE 0x4000
+
